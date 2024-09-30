@@ -42,7 +42,7 @@ export class AppComponent implements AfterViewInit {
   injectUnsafeHTML(): void {
     try {
       const unsafeHTML = '<img src="none" onerror="alert(\'XSS\')">';
-      (this.document.getElementById('content') as Element).innerHTML = unsafeHTML;
+      (this.document.getElementById('content') as Element).innerHTML = '' + unsafeHTML;
     } catch (error) {
       console.error('Unsafe HTML injection blocked by Trusted Types:', error);
       alert('Unsafe HTML injection blocked by Trusted Types.');
